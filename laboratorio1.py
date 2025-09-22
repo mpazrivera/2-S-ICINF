@@ -31,7 +31,48 @@ class Gatito:
 gatito1 = Gatito("Ruperta", 2, "Blanco", 100, 0)
 gatito2 = Gatito("Blanca", 3, "Negro", 80, 20)
 gatito3 = Gatito("Oreo", 1, "Blanco con negro", 60, 40)
-gatito4 = input(Gatito)
+gatito4 = Gatito("Mango", 2, "anaranjado", 40, 60)
+gatito5 = Gatito("Copito", 4, "Blanco", 80, 40)
 
-gatito2.alimentar()
+#Parte 2 
+class Espacio:
+    def __init__(self, nombre_lugar, capacidad_maxima):
+        self.nombre_lugar = nombre_lugar
+        self.capacidad_maxima = capacidad_maxima
+        self.gatito = []
+
+    def agregar_gatito(self, gatito):
+        if len(self.gatito) < self.capacidad_maxima:
+            self.gatito.append(gatito)
+            print(f"{gatito.nombre} ha sido agregado al espacio {self.nombre}.")
+        else:
+            print(f"No se puede agregar a {gatito.nombre}. El espacio {self.nombre} está lleno.")
+
+    def mostrar_gatitos(self):
+        print(f"Gatitos en el espacio {self.nombre}:")
+        for gatito in self.gatito:
+            print(f"- {gatito.nombre}, Edad: {gatito.edad}")
+
+terraza = Espacio("Terraza", 2)
+salon = Espacio("Salon", 4)
+
+# Agregar gatos al espacio
+terraza.agregar_gatito(gatito1)
+terraza.agregar_gatito(gatito2)
+terraza.agregar_gatito(gatito4)
+salon.agregar_gatito(gatito3)
+salon.agregar_gatito(gatito5)
+
+# Mostrar información de los gatos en el espacio
+terraza.mostrar_gatitos()
+salon.mostrar_gatitos()
+
+# Interacciones
+gatito2.jugar()
 gatito4.alimentar()
+
+# Mostrar estado del gato
+print(gatito1)
+
+#Mostar que el gatito salio del lugar
+print(f"el gatito {gatito5} salio del lugar")
